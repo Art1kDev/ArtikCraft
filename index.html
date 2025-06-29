@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArtikCraft | Minecraft Unity Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Minecraft&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-image: url('BG.png');
+            background-image: url('https://i.postimg.cc/htrSGGN6/1000086180.png');
             background-repeat: repeat;
             min-height: 100vh;
-            font-family: Arial, sans-serif;
+            font-family: 'Minecraft', Arial, sans-serif;
         }
         
         .logo-container {
@@ -43,71 +44,70 @@
             color: white;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
         }
-
-        .download-link {
-            color: white;
-            text-decoration: underline;
-            cursor: pointer;
-        }
-
-        .download-link:hover {
-            color: #ccc;
-        }
-
-        /* Стили для страницы загрузки */
+        
         .download-page {
-            display: none;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
         }
-
-        .version-section {
-            width: 100%;
-            margin-bottom: 15px;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .section-title {
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .toggle-button {
-            background: url('Down_BUT.png') no-repeat center;
-            background-size: contain;
-            width: 20px;
-            height: 20px;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .toggle-button.opened {
-            background-image: url('Up_BUT.png');
-        }
-
+        
         .version-list {
             display: none;
-            padding: 10px 0;
             flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
         }
-
-        .version-link {
+        
+        .version-item {
             color: white;
             text-decoration: none;
-            padding: 5px 0;
-            margin: 3px 0;
-            display: block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
-
-        .version-link:hover {
-            text-decoration: underline;
+        
+        .version-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .toggle-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            margin-left: 10px;
+        }
+        
+        .toggle-button img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .version-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-image: url('https://i.postimg.cc/jdr0r0Cw/slider-handle.png');
+            background-size: cover;
+            color: white;
+            text-decoration: none;
+            font-family: 'Minecraft', sans-serif;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background-image 0.2s;
+        }
+        
+        .download-btn:hover {
+            background-image: url('https://i.postimg.cc/6pgfDw5F/slider-handle-highlighted.png');
         }
         
         @media (max-width: 768px) {
@@ -127,86 +127,78 @@
     </style>
 </head>
 <body>
-    <!-- Главная страница -->
-    <div id="main-page">
-        <div class="logo-container">
-            <img src="https://postimg.cc/rD7pgnkz" alt="ArtikCraft Logo" class="logo">
-            
-            <div class="content-wrapper">
-                <img src="Photo.png" alt="Game Screenshot" class="left-image">
-                <div class="right-text">
-                    <h2>ArtikCraft, formerly Minecraft Unity Edition (MCUE)</h2>
-                    <p>This is Minecraft written in Unity. The game has a bunch of blocks, world generation and much more.</p>
-                    <a href="#" class="download-link" onclick="showDownloadPage()">Download Game</a>
-                </div>
+    <div id="main-page" class="logo-container">
+        <a href="index.html">
+            <img src="https://i.postimg.cc/sDcZzm6y/loho-pmh.png" alt="Логотип ArtikCraft" class="logo">
+        </a>
+        
+        <div class="content-wrapper">
+            <img src="https://i.postimg.cc/FFpQNWqp/5404581198413560926.jpg" alt="ArtikCraft Скриншот" class="left-image">
+            <div class="right-text">
+                <h2>ArtikCraft, formerly Minecraft Unity Edition (MCUE)</h2>
+                <p>This is Minecraft written in Unity. The game has a bunch of blocks, world generation and much more.</p>
+                <p><a href="#" onclick="showPage('download-page')" class="download-btn">Download</a></p>
             </div>
         </div>
     </div>
 
-    <!-- Страница загрузки -->
-    <div id="download-page" class="download-page">
-        <div class="logo-container">
-            <img src="https://postimg.cc/rD7pgnkz" alt="ArtikCraft Logo" class="logo">
-            
-            <div class="content-wrapper">
-                <h2>Download ArtikCraft</h2>
-                
-                <div class="version-section">
-                    <div class="section-header" onclick="toggleSection('latest')">
-                        <span class="section-title">Latest Version</span>
-                        <button class="toggle-button"></button>
-                    </div>
-                    <div class="version-list" id="latest-list">
-                        <a href="https://gamejolt.com/games/ArtikCraft/998759" class="version-link" target="_blank">0.015a</a>
-                        <a href="https://gamejolt.com/games/ArtikCraft/998759" class="version-link" target="_blank">0.014a</a>
-                        <a href="https://gamejolt.com/games/ArtikCraft/998759" class="version-link" target="_blank">0.013a</a>
-                        <a href="https://gamejolt.com/games/ArtikCraft/998759" class="version-link" target="_blank">0.012a</a>
-                    </div>
-                </div>
-
-                <div class="version-section">
-                    <div class="section-header" onclick="toggleSection('old')">
-                        <span class="section-title">Old Versions</span>
-                        <button class="toggle-button"></button>
-                    </div>
-                    <div class="version-list" id="old-list">
-                        <a href="https://artikar7.itch.io/minecraftunityedition" class="version-link" target="_blank">0.010a</a>
-                        <a href="https://artikar7.itch.io/minecraftunityedition" class="version-link" target="_blank">0.07a</a>
-                        <a href="https://artikar7.itch.io/minecraftunityedition" class="version-link" target="_blank">0.04a</a>
-                        <a href="https://artikar7.itch.io/minecraftunityedition" class="version-link" target="_blank">0.03a</a>
-                        <a href="https://artikar7.itch.io/minecraftunityedition" class="version-link" target="_blank">0.02a</a>
-                        <a href="https://artikar7.itch.io/minecraftunityedition" class="version-link" target="_blank">0.01b</a>
-                        <a href="https://artikar7.itch.io/minecraftunityedition" class="version-link" target="_blank">0.01a</a>
-                        <a href="https://artikar7.itch.io/minecraftunityedition" class="version-link" target="_blank">MC-262713</a>
-                    </div>
-                </div>
-
-                <a href="#" class="download-link" onclick="showMainPage()" style="margin-top: 20px;">Back to Main Page</a>
+    <div id="download-page" class="download-page" style="display: none;">
+        <a href="#" onclick="showPage('main-page')">
+            <img src="https://i.postimg.cc/sDcZzm6y/loho-pmh.png" alt="Логотип ArtikCraft" class="logo">
+        </a>
+        
+        <h2>Download ArtikCraft</h2>
+        
+        <div class="version-section">
+            <div class="version-header" onclick="toggleVersions('latest')">
+                <h3>Latest Version</h3>
+                <button class="toggle-button">
+                    <img src="https://i.postimg.cc/9ft21KKT/70-20250629153309.png" alt="Show versions" id="latest-toggle">
+                </button>
+            </div>
+            <div id="latest-versions" class="version-list">
+                <a href="https://gamejolt.com/games/ArtikCraft/998759" class="version-item">0.015a</a>
+                <a href="https://gamejolt.com/games/ArtikCraft/998759" class="version-item">0.014a</a>
+                <a href="https://gamejolt.com/games/ArtikCraft/998759" class="version-item">0.013a</a>
+            </div>
+        </div>
+        
+        <div class="version-section">
+            <div class="version-header" onclick="toggleVersions('old')">
+                <h3>Old Versions</h3>
+                <button class="toggle-button">
+                    <img src="https://i.postimg.cc/9ft21KKT/70-20250629153309.png" alt="Show versions" id="old-toggle">
+                </button>
+            </div>
+            <div id="old-versions" class="version-list">
+                <a href="https://artikar7.itch.io/minecraftunityedition" class="version-item">0.010a</a>
+                <a href="https://artikar7.itch.io/minecraftunityedition" class="version-item">0.07a</a>
+                <a href="https://artikar7.itch.io/minecraftunityedition" class="version-item">0.04a</a>
+                <a href="https://artikar7.itch.io/minecraftunityedition" class="version-item">0.03a</a>
+                <a href="https://artikar7.itch.io/minecraftunityedition" class="version-item">0.02a</a>
+                <a href="https://artikar7.itch.io/minecraftunityedition" class="version-item">0.01b</a>
+                <a href="https://artikar7.itch.io/minecraftunityedition" class="version-item">0.01a</a>
+                <a href="https://artikar7.itch.io/minecraftunityedition" class="version-item">MC-262713</a>
             </div>
         </div>
     </div>
 
     <script>
-        function showDownloadPage() {
-            document.getElementById('main-page').style.display = 'none';
-            document.getElementById('download-page').style.display = 'block';
+        function showPage(pageId) {
+            document.getElementById('main-page').style.display = pageId === 'main-page' ? 'block' : 'none';
+            document.getElementById('download-page').style.display = pageId === 'download-page' ? 'block' : 'none';
         }
-
-        function showMainPage() {
-            document.getElementById('download-page').style.display = 'none';
-            document.getElementById('main-page').style.display = 'block';
-        }
-
-        function toggleSection(sectionId) {
-            const list = document.getElementById(`${sectionId}-list`);
-            const button = document.querySelector(`#${sectionId}-list`).previousElementSibling.querySelector('.toggle-button');
+        
+        function toggleVersions(type) {
+            const versions = document.getElementById(`${type}-versions`);
+            const toggleImg = document.getElementById(`${type}-toggle`);
             
-            if (list.style.display === 'flex') {
-                list.style.display = 'none';
-                button.classList.remove('opened');
+            if (versions.style.display === 'none' || !versions.style.display) {
+                versions.style.display = 'flex';
+                toggleImg.src = 'https://i.postimg.cc/mDjbZJSR/70-20250629153338.png';
             } else {
-                list.style.display = 'flex';
-                button.classList.add('opened');
+                versions.style.display = 'none';
+                toggleImg.src = 'https://i.postimg.cc/9ft21KKT/70-20250629153309.png';
             }
         }
     </script>
