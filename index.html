@@ -13,6 +13,8 @@
             background-repeat: repeat;
             min-height: 100vh;
             font-family: 'Minecraft', Arial, sans-serif;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
         }
         
         .logo-container {
@@ -41,15 +43,13 @@
         
         .right-text {
             max-width: 400px;
-            color: white;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
         }
         
-        .download-page {
+        .page {
             text-align: center;
-            color: white;
             padding: 20px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .version-list {
@@ -92,7 +92,7 @@
             cursor: pointer;
         }
         
-        .download-btn {
+        .download-btn, .nav-btn {
             display: inline-block;
             padding: 10px 20px;
             background-image: url('https://i.postimg.cc/jdr0r0Cw/slider-handle.png');
@@ -104,10 +104,27 @@
             border: none;
             cursor: pointer;
             transition: background-image 0.2s;
+            margin: 5px;
         }
         
-        .download-btn:hover {
+        .download-btn:hover, .nav-btn:hover {
             background-image: url('https://i.postimg.cc/6pgfDw5F/slider-handle-highlighted.png');
+        }
+        
+        .update-list {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        
+        .update-item {
+            margin: 10px 0;
+            padding: 5px;
+        }
+        
+        .update-version {
+            font-weight: bold;
+            color: #4CAF50;
         }
         
         @media (max-width: 768px) {
@@ -137,12 +154,15 @@
             <div class="right-text">
                 <h2>ArtikCraft, formerly Minecraft Unity Edition (MCUE)</h2>
                 <p>This is Minecraft written in Unity. The game has a bunch of blocks, world generation and much more.</p>
-                <p><a href="#" onclick="showPage('download-page')" class="download-btn">Download</a></p>
+                <p>
+                    <a href="#" onclick="showPage('download-page')" class="download-btn">Download</a>
+                    <a href="#" onclick="showPage('features-page')" class="nav-btn">Updates</a>
+                </p>
             </div>
         </div>
     </div>
 
-    <div id="download-page" class="download-page" style="display: none;">
+    <div id="download-page" class="page" style="display: none;">
         <a href="#" onclick="showPage('main-page')">
             <img src="https://i.postimg.cc/sDcZzm6y/loho-pmh.png" alt="Логотип ArtikCraft" class="logo">
         </a>
@@ -183,10 +203,28 @@
         </div>
     </div>
 
+    <div id="features-page" class="page" style="display: none;">
+        <a href="#" onclick="showPage('main-page')">
+            <img src="https://i.postimg.cc/sDcZzm6y/loho-pmh.png" alt="Логотип ArtikCraft" class="logo">
+        </a>
+        
+        <h2>Latest Updates</h2>
+        
+        <div class="update-list">
+            <div class="update-item">
+                <span class="update-version">0.015a</span> - new cloth
+            </div>
+        </div>
+        
+        <a href="#" onclick="showPage('download-page')" class="download-btn">Download Now</a>
+        <a href="#" onclick="showPage('main-page')" class="nav-btn">Back to Main</a>
+    </div>
+
     <script>
         function showPage(pageId) {
             document.getElementById('main-page').style.display = pageId === 'main-page' ? 'block' : 'none';
             document.getElementById('download-page').style.display = pageId === 'download-page' ? 'block' : 'none';
+            document.getElementById('features-page').style.display = pageId === 'features-page' ? 'block' : 'none';
         }
         
         function toggleVersions(type) {
