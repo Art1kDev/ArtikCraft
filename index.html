@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtikCraft | Minecraft Unity Edition</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('BG.png');
+            background-repeat: repeat;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        
+        .logo-container {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            max-width: 300px;
+            height: auto;
+        }
+        
+        .content-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+        
+        .left-image {
+            max-width: 250px;
+            height: auto;
+            border-radius: 10px;
+        }
+        
+        .right-text {
+            max-width: 400px;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        .download-link {
+            color: white;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .download-link:hover {
+            color: #ccc;
+        }
+        
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .left-image {
+                max-width: 80%;
+            }
+            
+            .right-text {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="logo.png" alt="Логотип ArtikCraft" class="logo">
+        
+        <div class="content-wrapper">
+            <img src="Photo.png" alt="ArtikCraft Скриншот" class="left-image">
+            <div class="right-text">
+                <h2>ArtikCraft, formerly Minecraft Unity Edition (MCUE)</h2>
+                <p>This is Minecraft written in Unity. The game has a bunch of blocks, world generation and much more.</p>
+                <a href="download.html" class="download-link">Download Game</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
